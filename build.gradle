@@ -2,4 +2,17 @@
 plugins {
     id 'com.android.application' version '7.4.2' apply false
     id 'com.android.library' version '7.4.2' apply false
+
+    id "com.star-zero.gradle.githook" version "1.2.0"
+    id "ru.netris.commitlint" version "1.4"
+}
+
+githook {
+    failOnMissingHooksDir = false
+    createHooksDirIfNotExist = false
+    hooks {
+        "commit-msg" {
+            task = "commitlint -Dmsgfile=\$1"
+        }
+    }
 }
